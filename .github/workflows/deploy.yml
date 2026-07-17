@@ -1,9 +1,6 @@
 name: Deploy
 run-name: Deploy Application Latest
-# on:
-#   push:
-#     tags:
-#       - 'v*'
+
 on: workflow_dispatch
 
 jobs:
@@ -11,6 +8,7 @@ jobs:
     runs-on: self-hosted
     environment: deploy
     timeout-minutes: 5
+    
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -40,7 +38,7 @@ jobs:
           git clone https://github.com/kevinthedang/discord-ollama.git ${{ secrets.PATH }}
           cd ${{ secrets.PATH }}
       
-      - name: Install nvm and Node.js lts/jod
+      - name: Install nvm and Node.js
         run: |
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
           export NVM_DIR="$HOME/.nvm"

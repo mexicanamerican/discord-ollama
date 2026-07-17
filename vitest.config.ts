@@ -1,4 +1,4 @@
-import { defineConfig, configDefaults } from 'vitest/config'
+import { defineConfig } from 'vitest/config'
 
 // config for vitest
 export default defineConfig({
@@ -6,8 +6,8 @@ export default defineConfig({
         globals: true, // <-- reduces test file imports
         reporters: ['verbose'], // <-- verbose output
         coverage: {
-            exclude: [...configDefaults.exclude, 'build/*', 'tests/*'], // <-- exclude JS build
-            reporter: ['text-summary'] // <-- report in text-summary
+            include: ['src/**/*.ts'],
+            reporter: 'json-summary'
         }
     }
 })
